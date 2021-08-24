@@ -13,13 +13,32 @@ class TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('リスト一覧'),
+        title: Text('やること一覧'),
       ),
       body: ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(title: Text(todoList[index])),
+          return Dismissible(
+            key: UniqueKey(),
+            direction: DismissDirection.endToStart,
+            onDismissed: (direction) {
+              setState(() {
+                todoList.removeAt(index);
+              });
+            },
+            background: Container(
+              alignment: AlignmentDirectional.centerEnd,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
+              padding: EdgeInsets.only(right: 10.0),
+              child: Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+            ),
+            child: Card(
+              child: ListTile(title: Text(todoList[index])),
+            ),
           );
         },
       ),

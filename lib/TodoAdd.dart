@@ -32,6 +32,7 @@ class TodoAddPageState extends State<TodoAddPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
+                    if (_text.isEmpty) return null;
                     Navigator.of(context).pop(_text);
                   },
                   child: Text('リスト追加', style: TextStyle(color: Colors.white)),
