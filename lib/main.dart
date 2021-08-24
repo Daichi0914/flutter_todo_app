@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './Todo.dart';
+import './TodoList.dart';
 
 void main() {
   runApp(TodoApp());
@@ -13,7 +13,7 @@ class TodoApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.pink[900],
       ),
-      home: TodoPage()
+      home: TodoListPage()
     );
   }
 }
